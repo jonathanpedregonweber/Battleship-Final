@@ -35,18 +35,15 @@ public class Battleship
 			
 			while (input != null)
 			{
-				System.out.println(input);
 				Message message = MessageFactory.parse(input);
-				
-				System.out.println(message.type);
-				
-				if (loop == 0) {
-					sh.SendHitMessage(true);
-				} else if (loop == 1) {
-					sh.SendMoveMessage(2, 2);
-				} else if (loop == 2) {
-					sh.SendStartMessage();
+				if(message.type == "Chat")
+				{
+					ChatMessage chat = (ChatMessage) message;
+					gui.AppendTextArea(chat.chatMessage);
 				}
+				
+				System.out.println("Message type: "+ message.type);
+				System.out.println(message);
 				
 				input = read.readLine();
 				loop++;

@@ -1,4 +1,5 @@
 import Main.Handlers.ServerHandler;
+import Models.Coordinates;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -49,14 +50,14 @@ public class BattleshipGui extends JFrame
 		scrollPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		
 		text = new JTextArea();
-		JButton send = new JButton("Send");
+		JButton send = new JButton("Send Chat");
 		send.addActionListener(new ActionListener()
 		{
 			
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-//				dlm.addElement(text.getText());
+				dlm.addElement("                       " + text.getText());
 				sh.SendChatMessage(text.getText());
 				text.setText("");
 			}
@@ -86,7 +87,6 @@ public class BattleshipGui extends JFrame
 			{
 				randomize.setEnabled(false);
 				start.setEnabled(false);
-				System.out.println("start");
 			}
 			
 		});
@@ -109,6 +109,30 @@ public class BattleshipGui extends JFrame
 		setVisible(true);
 	}
 
+	public void AppendTextArea(String text)
+	{
+		dlm.addElement(text);
+	}
+
+	private void RandomizeShips()
+	{
+
+	}
+
+	private void BuildShip(int shipSize)
+	{
+		Date date = new Date();
+		if(date.getTime() % 1 == 0)
+		{
+
+		}
+	}
+
+	private Coordinates[] GetVerticalShipCoordinates(int shipSize)
+	{
+		Random random = new Random(new Date().getTime());
+		return new Coordinates[1];
+	}
 
 	private void initEnemy()
 	{
